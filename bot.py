@@ -19,3 +19,5 @@ def echo_all(message):
 if __name__ == "__main__":
     print("Bot está rodando...")
     bot.polling()
+
+#teste versão e envio
