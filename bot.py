@@ -2,7 +2,12 @@ import telebot
 import os
 
 # Pegamos o token do bot no ambiente
-TOKEN = os.getenv("7846920885:AAEDv34yHHXtlhpWQisBWwwxESp2LY998kM")
+TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+
+if not TOKEN:
+    print("Erro: TELEGRAM_BOT_TOKEN não encontrado.")
+    exit(1)  # Encerra o programa se o token não estiver definido
+
 bot = telebot.TeleBot(TOKEN)
 
 # Comando /start
@@ -17,7 +22,8 @@ def echo_all(message):
 
 # Inicia o bot
 if __name__ == "__main__":
-    print("Bot está rodando...")
-    bot.polling()
-
-# Inicio do arquivo
+    try:
+        print("Bot está rodando...")
+        bot.polling()
+    except Exception as e:
+        print(f"Erro ao rodar o bot: {e}")
